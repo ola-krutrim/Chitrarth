@@ -29,7 +29,7 @@ git clone https://github.com/ola-krutrim/Chitrarth.git
 conda create --name chitrarth python=3.10 -y
 conda activate chitrarth
 cd Chitrarth 
-conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia -y
+conda install pytorch torchvision torchaudio pytorch-cuda=12.4 -c pytorch -c nvidia -y
 pip install -e .
 pip install flash_attn==2.5.8
 python chitrarth/inference.py --model-path "krutrim-ai-labs/chitrarth" --image-file "assets/govt_school.jpeg" --query "Explain the image. "
