@@ -26,9 +26,10 @@ Visit [Chitrarth Online](https://cloud.olakrutrim.com/console/inference-service?
 ```
 # Clone the Repository
 git clone https://github.com/ola-krutrim/Chitrarth.git
-conda create --name chitrarth python=3.10
+conda create --name chitrarth python=3.10 -y
 conda activate chitrarth
 cd Chitrarth 
+conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia -y
 pip install -e .
 python chitrarth/inference.py --model-path "krutrim-ai-labs/chitrarth" --image-file "assets/govt_school.jpeg" --query "Explain the image. "
 ```
