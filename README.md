@@ -1,15 +1,3 @@
----
-license: other
-language:
-- hi
-- bn
-- ta
-- te
-- gu
-- or
-- en
-- as
----
 # Chitrarth: Bridging Vision and Language for a Billion People
 
 ## 1. Introduction
@@ -64,15 +52,16 @@ Below are the performance results of **Chitrarth** on BharatBench across three e
 | **English**    | 87.63    | 67.9            | 30.49     |
 
 ## 6. CLI Inference
-- Clone the Repository
+
 ```
+# Clone the Repository
 git clone https://github.com/ola-krutrim/Chitrarth.git
 conda create --name chitrarth python=3.10
 conda activate chitrarth
 cd Chitrarth 
 conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
 pip install -e .
-python chitrarth/inference.py --model-path "krutrim-ai-labs/chitrarth" --image-file "govt_school.jpeg" --query "Explain the image. "
+python chitrarth/inference.py --model-path "krutrim-ai-labs/chitrarth" --image-file "assets/govt_school.jpeg" --query "Explain the image. "
 ```
 ## 7. License
 
