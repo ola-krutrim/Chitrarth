@@ -25,7 +25,7 @@ dependencies = [
     "sentencepiece==0.1.99",
     "einops==0.6.1", "einops-exts==0.0.4", "timm==0.6.13",
     "chardet",
-    "flash_attn==2.5.8", "numpy==1.26.0"
+    "flash_attn==2.6.3", "numpy==1.26.0"
 ]
 
 [project.urls]
