@@ -29,11 +29,12 @@ git clone https://github.com/ola-krutrim/Chitrarth.git
 conda create --name chitrarth python=3.10 -y
 conda activate chitrarth
 cd Chitrarth 
-conda install pytorch torchvision torchaudio pytorch-cuda=12.4 -c pytorch -c nvidia -y
+conda install pytorch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 pytorch-cuda=12.4 -c pytorch -c nvidia -y 
 pip install -e .
 pip install flash_attn==2.5.8
 python chitrarth/inference.py --model-path "krutrim-ai-labs/chitrarth" --image-file "assets/govt_school.jpeg" --query "Explain the image. "
 ```
+Note: If you are facing the flash_attn import issue, consider installing the `flash_attn==2.6.3`. We tested our inference script with `torch==2.5.1` and `transformers==4.37.0`
 
 ## 5. Evaluation Results
 
