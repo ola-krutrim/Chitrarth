@@ -11,6 +11,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, AutoConfig, BitsAn
 from chitrarth.model.builder import load_pretrained_model
 from chitrarth.mm_utils import get_model_name_from_path
 import torch
+import string
 from chitrarth.model import *
 
 from PIL import Image
@@ -38,7 +39,7 @@ class KeywordsStoppingCriteria(StoppingCriteria):
         else:
             outputs = self.tokenizer.batch_decode(output_ids[:, self.start_len:], skip_special_tokens=True)
             flag = False
-            
+
             # print("Stopping Criteria: In else")
             for output in outputs:
                 for keyword in self.keywords:
@@ -52,14 +53,34 @@ def load_image(image_file):
         response = requests.get(image_file)
         image = Image.open(BytesIO(response.content)).convert('RGB')
     else:
-        image = Image.open(BytesIO(base64.b64decode(image_file))).convert('RGB')
+        image = Image.open(image_file).convert('RGB')
     return image
 
-def eval_model(tokenizer, model, image_processor, context_len, query, image_file, sep=','):
+def check_last_5_alphanumeric(input_str):
+    """
+    Checks if the last 5 characters of a string are alphanumeric.
+
+    Parameters:
+    input_str (str): The input string to check.
+
+    Returns:
+    bool: True if the last 5 characters are alphanumeric, False otherwise.
+    """
+    if len(input_str) < 10:
+        return False
+
+    last_5 = input_str[-5:]
+    return any(char in string.ascii_letters + string.digits for char in last_5)
+
+@torch.inference_mode()
+def eval_model(tokenizer, model, image_processor, context_len, query, image_file=None, sep=',', max_new_tokens=1024, repetition_penalty=1.2, temperature=0.9,top_p=0.9):
 
     # disable_torch_init()
-    
+
     qs = query
+    if check_last_5_alphanumeric(qs):
+        if qs[-1] not in ("?", "."):
+            qs += "."
     if model.config.mm_use_im_start_end:
         qs = DEFAULT_IM_START_TOKEN + DEFAULT_IMAGE_TOKEN + DEFAULT_IM_END_TOKEN + '\n' + qs
     else:
@@ -72,7 +93,7 @@ def eval_model(tokenizer, model, image_processor, context_len, query, image_file
     conv.append_message(conv.roles[1], None)
     prompt = conv.get_prompt()
 
-    prompt += ": "
+    #prompt += ": "
     prompt = prompt.strip()
     print("prompt ", {prompt})
     if image_file:
@@ -80,11 +101,12 @@ def eval_model(tokenizer, model, image_processor, context_len, query, image_file
         image_tensor = image_processor.preprocess(image, return_tensors='pt')['pixel_values'].half().cuda()
     else:
         image_tensor = None
+        prompt = prompt.replace(DEFAULT_IMAGE_TOKEN + '\n', '')
 
     input_ids = tokenizer_image_token(prompt, tokenizer, IMAGE_TOKEN_INDEX, return_tensors='pt').unsqueeze(0).cuda()
 
-    stop_str = "###"#conv.sep if conv.sep_style != SeparatorStyle.TWO else conv.sep2
-    keywords = ["###", "</s>"]
+    stop_str = "</assistant>"#conv.sep if conv.sep_style != SeparatorStyle.TWO else conv.sep2
+    keywords = [ "</assistant>"]
     stopping_criteria = KeywordsStoppingCriteria(keywords, tokenizer, input_ids)
 
     with torch.inference_mode():
@@ -92,10 +114,10 @@ def eval_model(tokenizer, model, image_processor, context_len, query, image_file
             input_ids,
             images=image_tensor,
             do_sample=False,
-            temperature=0.9,
+            temperature=temperature,
             top_k=200,
-            top_p=0.9,
-            max_new_tokens=1024,
+            top_p=top_p,
+            max_new_tokens=max_new_tokens,
             use_cache=True,
             stopping_criteria=[stopping_criteria])
 
@@ -105,26 +127,19 @@ def eval_model(tokenizer, model, image_processor, context_len, query, image_file
         print(f'[Warning] {n_diff_input_output} output_ids are not the same as the input_ids')
     outputs = tokenizer.batch_decode(output_ids[:, input_token_len:], skip_special_tokens=True)[0]
     outputs = outputs.strip()
-
     if outputs.endswith(stop_str):
         outputs = outputs[:-len(stop_str)]
     outputs = outputs.strip()
     return outputs
 
-# model_base = None
-# model_path = "../../llava-responder_v2_mpt-finetune-vit_336_krtrim_conv_hin"
-
-# query = "What is this image about?"
-# image_file = "../images/llava_logo.png"
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--model-path", type=str, required=True)
-    parser.add_argument("--model-base", type=str, default=None)
     parser.add_argument("--image-file", type=str, required=True)
     parser.add_argument("--query", type=str, required=True)
     args = parser.parse_args()
 
-    tokenizer, model, image_processor, context_len = load_pretrained_model(args.model_path, model_base=args.model_base, model_name='mpt_llava')
+    tokenizer, model, image_processor, context_len = load_pretrained_model(args.model_path, model_base=None, model_name='chitrarth')
 
-    eval_model(tokenizer, model, image_processor, context_len, args.query, args.image_file)
+    print(eval_model(tokenizer, model, image_processor, context_len, args.query, args.image_file))

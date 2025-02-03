@@ -63,9 +63,19 @@ Below are the performance results of **Chitrarth** on BharatBench across three e
 | **Odia**       | 82.03    | 62.8            | 19.67     |
 | **English**    | 87.63    | 67.9            | 30.49     |
 
-## 6. License
+## 6. CLI Inference
+- Clone the Repository
+```
+git clone https://github.com/ola-krutrim/Chitrarth.git
+conda create chitrarth python=3.10
+conda activate chitrarth
+cd Chitrarth 
+pip install -e .
+python chitrarth/inference.py --model-path "krutrim-ai-labs/chitrarth" --image-file "govt_school.jpeg" --query "Explain the image. "
+```
+## 7. License
 
-## 7. Citation
+## 8. Citation
 
 ```
 @inproceedings{
@@ -77,5 +87,5 @@ Below are the performance results of **Chitrarth** on BharatBench across three e
 }
 ```
 
-## 8. Contact
+## 9. Contact
 Contributions are welcome! If you have any improvements or suggestions, feel free to submit a pull request on GitHub.
