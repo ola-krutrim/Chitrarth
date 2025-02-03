@@ -67,9 +67,10 @@ Below are the performance results of **Chitrarth** on BharatBench across three e
 - Clone the Repository
 ```
 git clone https://github.com/ola-krutrim/Chitrarth.git
-conda create chitrarth python=3.10
+conda create --name chitrarth python=3.10
 conda activate chitrarth
 cd Chitrarth 
+conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
 pip install -e .
 python chitrarth/inference.py --model-path "krutrim-ai-labs/chitrarth" --image-file "govt_school.jpeg" --query "Explain the image. "
 ```
