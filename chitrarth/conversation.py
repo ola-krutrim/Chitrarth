@@ -229,63 +229,7 @@ class Conversation:
         }
 
 
-conv_vicuna_v0 = Conversation(
-    system="A chat between a curious human and an artificial intelligence assistant. "
-           "The assistant gives helpful, detailed, and polite answers to the human's questions.",
-    roles=("Human", "Assistant"),
-    messages=(
-        ("Human", "What are the key differences between renewable and non-renewable energy sources?"),
-        ("Assistant",
-            "Renewable energy sources are those that can be replenished naturally in a relatively "
-            "short amount of time, such as solar, wind, hydro, geothermal, and biomass. "
-            "Non-renewable energy sources, on the other hand, are finite and will eventually be "
-            "depleted, such as coal, oil, and natural gas. Here are some key differences between "
-            "renewable and non-renewable energy sources:\n"
-            "1. Availability: Renewable energy sources are virtually inexhaustible, while non-renewable "
-            "energy sources are finite and will eventually run out.\n"
-            "2. Environmental impact: Renewable energy sources have a much lower environmental impact "
-            "than non-renewable sources, which can lead to air and water pollution, greenhouse gas emissions, "
-            "and other negative effects.\n"
-            "3. Cost: Renewable energy sources can be more expensive to initially set up, but they typically "
-            "have lower operational costs than non-renewable sources.\n"
-            "4. Reliability: Renewable energy sources are often more reliable and can be used in more remote "
-            "locations than non-renewable sources.\n"
-            "5. Flexibility: Renewable energy sources are often more flexible and can be adapted to different "
-            "situations and needs, while non-renewable sources are more rigid and inflexible.\n"
-            "6. Sustainability: Renewable energy sources are more sustainable over the long term, while "
-            "non-renewable sources are not, and their depletion can lead to economic and social instability.\n")
-    ),
-    offset=2,
-    sep_style=SeparatorStyle.SINGLE,
-    sep="###",
-)
-
-conv_vicuna_v1 = Conversation(
-    system="A chat between a curious user and an artificial intelligence assistant. "
-    "The assistant gives helpful, detailed, and polite answers to the user's questions.",
-    roles=("USER", "ASSISTANT"),
-    version="v1",
-    messages=(),
-    offset=0,
-    sep_style=SeparatorStyle.TWO,
-    sep=" ",
-    sep2="</s>",
-)
-
-conv_llama_2 = Conversation(
-    system="""You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe.  Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.
-
-If a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.""",
-    roles=("USER", "ASSISTANT"),
-    version="llama_v2",
-    messages=(),
-    offset=0,
-    sep_style=SeparatorStyle.LLAMA_2,
-    sep="<s>",
-    sep2="</s>",
-)
-
-conv_llava_krutrim = Conversation(
+conv_chitrarth = Conversation(
     system="<|SYSTEM|> "
            "You are a helpful language and vision assistant. "
            "You are able to understand the visual content that the user provides, "
@@ -296,129 +240,14 @@ conv_llava_krutrim = Conversation(
     offset=0,
     sep_style=SeparatorStyle.KRUTRIM,
     sep=" ",
-    sep2= "</assistant>",
-    #sep2="</s>",
+    sep2= "</assistant>"
 )
 
-conv_llava_krutrim_ocr = Conversation(
-    system="<|SYSTEM|> "
-           "You are a helpful language and vision assistant. "
-           "You are able to understand the visual content that the user provides, "
-           "and extract the text in the respective language present in the image",
-    roles=("<|USER|> <user>", "</user> <|RESPONSE|> <assistant>"),
-    version="llama_v2",
-    messages=(),
-    offset=0,
-    sep_style=SeparatorStyle.KRUTRIM,
-    sep=" ",
-    sep2= "</assistant>",
-    #sep2="</s>",
-)
-
-conv_llava_llama_2 = Conversation(
-    system="You are a helpful language and vision assistant. "
-           "You are able to understand the visual content that the user provides, "
-           "and assist the user with a variety of tasks using natural language.",
-    roles=("USER", "ASSISTANT"),
-    version="llama_v2_bkp",
-    messages=(),
-    offset=0,
-    sep_style=SeparatorStyle.LLAMA_2,
-    sep="<s>",
-    sep2="</s>",
-)
-
-conv_mpt = Conversation(
-    system="""<|im_start|>system
-A conversation between a user and an LLM-based AI assistant. The assistant gives helpful and honest answers.""",
-    roles=("<|im_start|>user\n", "<|im_start|>assistant\n"),
-    version="mpt",
-    messages=(),
-    offset=0,
-    sep_style=SeparatorStyle.MPT,
-    sep="<|im_end|>",
-)
-
-conv_llava_plain = Conversation(
-    system="",
-    roles=("", ""),
-    messages=(
-    ),
-    offset=0,
-    sep_style=SeparatorStyle.PLAIN,
-    sep="\n",
-)
-
-conv_llava_v0 = Conversation(
-    system="A chat between a curious human and an artificial intelligence assistant. "
-           "The assistant gives helpful, detailed, and polite answers to the human's questions.",
-    roles=("Human", "Assistant"),
-    messages=(
-    ),
-    offset=0,
-    sep_style=SeparatorStyle.SINGLE,
-    sep="###",
-)
-
-conv_llava_v0_mmtag = Conversation(
-    system="A chat between a curious user and an artificial intelligence assistant. "
-           "The assistant is able to understand the visual content that the user provides, and assist the user with a variety of tasks using natural language."
-           "The visual content will be provided with the following format: <Image>visual content</Image>.",
-    roles=("Human", "Assistant"),
-    messages=(
-    ),
-    offset=0,
-    sep_style=SeparatorStyle.SINGLE,
-    sep="###",
-    version="v0_mmtag",
-)
-
-conv_llava_v1 = Conversation(
-    system="A chat between a curious human and an artificial intelligence assistant. "
-           "The assistant gives helpful, detailed, and polite answers to the human's questions.",
-    roles=("USER", "ASSISTANT"),
-    version="v1",
-    messages=(),
-    offset=0,
-    sep_style=SeparatorStyle.TWO,
-    sep=" ",
-    sep2="</s>",
-)
-
-conv_llava_v1_mmtag = Conversation(
-    system="A chat between a curious user and an artificial intelligence assistant. "
-           "The assistant is able to understand the visual content that the user provides, and assist the user with a variety of tasks using natural language."
-           "The visual content will be provided with the following format: <Image>visual content</Image>.",
-    roles=("USER", "ASSISTANT"),
-    messages=(),
-    offset=0,
-    sep_style=SeparatorStyle.TWO,
-    sep=" ",
-    sep2="</s>",
-    version="v1_mmtag",
-)
-
-#default_conversation = conv_llava_krutrim
-default_conversation = conv_llava_krutrim_ocr
+default_conversation = conv_chitrarth
 
 conv_templates = {
-    "default": conv_vicuna_v0,
-    "v0": conv_vicuna_v0,
-    "v1": conv_vicuna_v1,
-    "vicuna_v1": conv_vicuna_v1,
-    "llama_2": conv_llama_2,
-
-    "plain": conv_llava_plain,
-    "v0_plain": conv_llava_plain,
-    "llava_v0": conv_llava_v0,
-    "v0_mmtag": conv_llava_v0_mmtag,
-    "llava_v1": conv_llava_v1,
-    "v1_mmtag": conv_llava_v1_mmtag,
-    "llava_llama_2": conv_llava_llama_2,
-
-    "mpt": conv_mpt,
-    "krutrim": conv_llava_krutrim,
-    "krutrim_ocr": conv_llava_krutrim_ocr,
+    "default": default_conversation,
+    "chitrarth": conv_chitrarth,
 }
 
 

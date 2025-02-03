@@ -29,21 +29,15 @@ class KeywordsStoppingCriteria(StoppingCriteria):
         self.start_len = None
         self.input_ids = input_ids
 
-        # print("Stopping Criteria keyowrds: ", self.keywords)
-
     def __call__(self, output_ids: torch.LongTensor, scores: torch.FloatTensor, **kwargs) -> bool:
         if self.start_len is None:
             self.start_len = self.input_ids.shape[1]
-            # print("Stopping Criteria: In if")
             return False
         else:
             outputs = self.tokenizer.batch_decode(output_ids[:, self.start_len:], skip_special_tokens=True)
             flag = False
-
-            # print("Stopping Criteria: In else")
             for output in outputs:
                 for keyword in self.keywords:
-                    # print(f"output: {output}, keyword: {keyword}, all keywords: {self.keywords}")
                     if keyword in output:
                         return True
             return flag
@@ -86,7 +80,7 @@ def eval_model(tokenizer, model, image_processor, context_len, query, image_file
     else:
         qs = DEFAULT_IMAGE_TOKEN + '\n' + qs
 
-    conv_mode = "krutrim"
+    conv_mode = "chitrarth"
 
     conv = conv_templates[conv_mode].copy()
     conv.append_message(conv.roles[0], qs)
