@@ -73,5 +73,5 @@ Below are the performance results of **Chitrarth** on BharatBench across three e
 }
 ```
 
-## 9. Contact
+## 8. Contact
 Contributions are welcome! If you have any improvements or suggestions, feel free to submit a pull request on GitHub.
