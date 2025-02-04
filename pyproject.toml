@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.8"
 classifiers = [
     "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: Apache Software License",
+    "License :: Krutrim Community License Agreement Version 1.0",
 ]
 dependencies = [
     "sentencepiece", "tokenizers>=0.12.1",
