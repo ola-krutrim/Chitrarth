@@ -89,7 +89,7 @@ def eval_model(tokenizer, model, image_processor, context_len, query, image_file
 
     #prompt += ": "
     prompt = prompt.strip()
-    print("prompt ", {prompt})
+    # print("prompt ", {prompt})
     if image_file:
         image = load_image(image_file)
         image_tensor = image_processor.preprocess(image, return_tensors='pt')['pixel_values'].half().cuda()
