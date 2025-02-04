@@ -26,8 +26,6 @@ from transformers.modeling_outputs import CausalLMOutputWithPast
 from .mpt.modeling_mpt import MPTConfig, MPTForCausalLM, MPTModel
 from chitrarth.model.chitrarth_arch import ChitrarthMetaModel, ChitrarthMetaForCausalLM
 
-# LlavaMPTConfig -> ChitrarthConfig; LlavaMPTModel -> ChitrarthModel; LlavaMPTForCausalLM -> ChitrarthForCausalLM
-# llava_mpt -> chitrarth
 
 class ChitrarthConfig(MPTConfig):
     model_type = "chitrarth"

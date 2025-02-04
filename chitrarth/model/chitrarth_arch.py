@@ -23,7 +23,7 @@ from .multimodal_projector.builder import build_vision_projector
 
 from chitrarth.constants import IGNORE_INDEX, IMAGE_TOKEN_INDEX, DEFAULT_IMAGE_PATCH_TOKEN, DEFAULT_IM_START_TOKEN, DEFAULT_IM_END_TOKEN
 
-# LlavaMetaModel -> ChitraMetaModel; LlavaMetaForCausalLM -> ChitraMetaForCausalLM
+
 class ChitrarthMetaModel:
 
     def __init__(self, config):
