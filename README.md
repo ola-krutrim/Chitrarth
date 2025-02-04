@@ -63,7 +63,7 @@ Below are the performance results of **Chitrarth** on BharatBench across three e
 
 
 ## 6. License
-
+[Krutrim Community License Agreement Version 1.0](LICENSE)
 ## 7. Citation
 
 ```
