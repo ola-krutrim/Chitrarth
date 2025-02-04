@@ -27,8 +27,8 @@ dependencies = [
 ]
 
 [project.urls]
-"Homepage" = "https://www.olakrutrim.com/"
-"Bug Tracker" = "https://github.com"
+"Homepage" = "https://ai-labs.olakrutrim.com/"
+"Bug Tracker" = "https://github.com/ola-krutrim/Chitrarth/issues"
 
 [tool.setuptools.packages.find]
 exclude = ["assets*", "benchmark*", "docs", "dist*", "playground*", "scripts*", "tests*"]
