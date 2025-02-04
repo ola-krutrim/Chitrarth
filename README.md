@@ -4,7 +4,9 @@
 
 Chitrarth (Chitra: Image; Artha: Meaning) is a multilingual VLM that integrates a state-of-the-art multilingual Large Language Model (LLM) with a vision module. This model is trained primarily on multilingual image-text data and is designed to work across 10 prominent Indian languages, including Hindi, Bengali, Telugu, Tamil, Marathi, Gujarati, Kannada, Malayalam, Odia, and Assamese, as well as English
 
-![teaser](assets/teaser.png)
+[![Chitrarth](https://img.youtube.com/vi/TmzEweLIgsc/0.jpg)](https://www.youtube.com/watch?v=TmzEweLIgsc)
+
+
 
 ## 2. Model Summary
 
