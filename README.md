@@ -34,7 +34,7 @@ pip install -e .
 pip install flash_attn==2.5.8
 python chitrarth/inference.py --model-path "krutrim-ai-labs/chitrarth" --image-file "assets/govt_school.jpeg" --query "Explain the image. "
 ```
-Note: If you are facing the flash_attn import issue, consider installing the `flash_attn==2.6.3`. We tested our inference script with `torch==2.5.1` and `transformers==4.37.0`
+Note: If you are facing the flash_attn import issue, consider installing the `pip install flash_attn==2.6.3`. We tested our inference script with `torch==2.5.1` and `transformers==4.37.0`
 
 ## 5. Evaluation Results
 
