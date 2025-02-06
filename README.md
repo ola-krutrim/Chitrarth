@@ -83,7 +83,3 @@ Below are the performance results of **Chitrarth** on BharatBench across three e
 
 ## 8. Contact
 Contributions are welcome! If you have any improvements or suggestions, feel free to submit a pull request on GitHub.
-
-## 9. Acknowledgement
-
-Chitrarth is built with reference to the code of the following projects: [Transformers](https://github.com/huggingface/transformers), and [LLaVA-1.5](https://github.com/haotian-liu/LLaVA). Thanks for their awesome work!
