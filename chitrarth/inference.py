@@ -1,3 +1,7 @@
+# Krutrim-AI-Labs Changes / Modifications done as follows:
+# 1. Changed llava module to chitrarth
+# 2. Modified eval_model function to support chitrarth conversation template
+
 import torch
 import base64
 import argparse

@@ -13,6 +13,9 @@
 #    limitations under the License.
 
 
+# Krutrim-AI-Labs Changes / Modifications done as follows:
+# 1. Classes LlavaMetaForCausalLM and LlavaMetaModel are changed to ChitrarthMetaForCausalLM and ChitrarthMetaModel respectively 
+
 from abc import ABC, abstractmethod
 
 import torch
