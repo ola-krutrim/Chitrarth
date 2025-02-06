@@ -1,3 +1,6 @@
+# Krutrim-AI-Labs Changes / Modifications done as follows:
+# 1. Added covnersation template for chitrarth
+
 import dataclasses
 from enum import auto, Enum
 from typing import List, Tuple
