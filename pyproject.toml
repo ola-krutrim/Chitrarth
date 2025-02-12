@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chitrarth"
+version = "0.0.1"
+description = "Towards GPT-4 like large language and visual assistant."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: Krutrim Community License Agreement Version 1.0",
+]
+dependencies = [
+    "sentencepiece", "tokenizers>=0.12.1",
+    "shortuuid", "httpx==0.24.0",
+    "deepspeed==0.9.5",
+    "peft==0.4.0",
+    "transformers==4.37.0",
+    "accelerate==0.21.0",
+    "bitsandbytes==0.45.1",
+    "scikit-learn==1.2.2",
+    "sentencepiece==0.1.99",
+    "einops==0.6.1", "einops-exts==0.0.4", "timm==0.6.13",
+    "chardet", "numpy==1.26.0"
+]
+
+[project.urls]
+"Homepage" = "https://ai-labs.olakrutrim.com/"
+"Bug Tracker" = "https://github.com/ola-krutrim/Chitrarth/issues"
+
+[tool.setuptools.packages.find]
+exclude = ["assets*", "benchmark*", "docs", "dist*", "playground*", "scripts*", "tests*"]
+
+[tool.wheel]
+exclude = ["assets*", "benchmark*", "docs", "dist*", "playground*", "scripts*", "tests*"]

@@ -1,0 +1,17 @@
+accelerate==0.21.0
+bitsandbytes==0.45.1
+chardet
+deepspeed==0.9.5
+einops==0.6.1
+einops-exts==0.0.4
+flash_attn==2.5.8
+httpx==0.24.0
+numpy==1.26.0
+peft==0.4.0
+torch==2.5.1
+scikit-learn==1.2.2
+sentencepiece==0.1.99
+shortuuid
+timm==0.6.13
+tokenizers>=0.12.1
+transformers==4.37.0
